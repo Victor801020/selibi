@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evolução da Substituição dos Trabalhos Humanos</title>
+
+  <!-- Tailwind CSS & Ícones -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="min-h-screen flex flex-col justify-between items-center p-3 md:p-6 relative overflow-hidden bg-black">
+
+  <!-- TELA DE APRESENTAÇÃO INICIAL -->
+  <div id="welcomeScreen" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black text-white text-center p-6 transition-opacity duration-700">
+    <div class="max-w-2xl bg-black/80 p-10 rounded-xl border border-white/10 shadow-2xl flex flex-col items-center gap-6">
+      <h1 class="text-5xl md:text-7xl font-black tracking-tight text-white leading-tight">
+        Vamos navegar no tempo?
+      </h1>
+      <p class="text-lg md:text-xl text-slate-300 font-medium">
+        Substituição dos trabalhos humanos
+      </p>
+      <button id="btnEnter" class="mt-2 px-10 py-5 bg-black hover:bg-slate-900 text-white font-black text-lg uppercase tracking-wider rounded-lg border border-white/30 shadow-lg transition-all duration-300 transform hover:scale-105 active:scale-95 flex items-center gap-3">
+        <span>Entrar</span>
+        <i class="fa-solid fa-arrow-right"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- NOTIFICAÇÃO SIMULADA DE PIX NO TOPO -->
+  <div id="webPixNotification" class="fixed top-4 right-4 z-50 max-w-sm bg-slate-900 border border-purple-500/50 text-white p-4 rounded-xl shadow-2xl transition-all duration-500 transform translate-x-full opacity-0 flex items-start gap-3">
+    <div class="w-10 h-10 rounded-full bg-[#8A19D6] flex items-center justify-center shrink-0 shadow-md">
+      <i class="fa-solid fa-bell text-white text-lg"></i>
+    </div>
+    <div class="flex-1">
+      <div class="flex items-center justify-between">
+        <span class="text-xs font-black text-purple-400 uppercase tracking-wider">Cobrança Pix</span>
+        <span class="text-[9px] text-slate-400">Agora</span>
+      </div>
+      <div id="webPixNotifText" class="text-xs font-bold text-slate-100 mt-1">Você recebeu uma cobrança.</div>
+      <div id="webPixNotifSub" class="text-[10px] text-slate-300 mt-0.5">Toque para pagar agora.</div>
+    </div>
+    <button id="btnCloseWebPixNotif" class="text-slate-400 hover:text-white text-xs p-1">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+  </div>
+
+  <!-- Plano de Fundo Dinâmico -->
+  <div id="bgTimeline" class="bg-timeline-image"></div>
+  <div class="bg-overlay"></div>
+
+  <!-- TÍTULO PRINCIPAL -->
+  <header class="z-10 text-center mt-2 mb-4 header-content px-4">
+    <h1 id="epochTitle" class="text-4xl md:text-7xl font-black text-white drop-shadow-2xl tracking-tight leading-tight"></h1>
+  </header>
+
+  <!-- Carrossel 3D Principal -->
+  <main class="w-full max-w-7xl scene-3d my-auto relative z-10 main-content flex items-center justify-center">
+    <div id="carouselStage" class="carousel-stage"></div>
+  </main>
+
+  <!-- RODAPÉ -->
+  <footer class="z-10 flex flex-col items-center mb-1 footer-content">
+    <div class="flex items-center gap-2 bg-black/70 border border-white/15 px-5 py-2 rounded-full text-xs font-semibold text-slate-200 shadow-xl">
+      <span>Navegar:</span>
+      <kbd class="px-2.5 py-1 bg-white/10 rounded border border-white/20 text-white font-mono text-xs">←</kbd>
+      <kbd class="px-2.5 py-1 bg-white/10 rounded border border-white/20 text-white font-mono text-xs">→</kbd>
+    </div>
+  </footer>
+
+
+  <!-- Mini janela de vídeo dentro do site -->
+  <div id="timelineMiniVideo" class="mini-video-overlay" hidden aria-hidden="true">
+    <section id="timelineMiniVideoWindow" class="mini-video-window" role="dialog" aria-label="Vídeo da linha do tempo">
+      <div id="timelineMiniVideoBar" class="mini-video-titlebar">
+        <span id="timelineMiniVideoTitle">Vídeo da linha do tempo</span>
+        <button type="button" class="mini-video-close" data-close-mini-video aria-label="Fechar vídeo" title="Fechar">&times;</button>
+      </div>
+      <div class="mini-video-frame-wrap"><iframe id="timelineMiniVideoFrame" title="Vídeo do YouTube" src="about:blank" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+    </section>
+  </div>
+
+  <!-- Script Principal via Módulo Front-end -->
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
